@@ -1,0 +1,7 @@
+# Copy to a path OUTSIDE this repo (e.g. ~/private/company.terms.txt) and edit.
+# One term per line. Plain lines match whole words, case-insensitive.
+# Prefix with re: for a raw regular expression.
+Jane Example
+Acme Widgets LLC
+fileserver01
+re:\bEMP-[0-9]{4}\b
