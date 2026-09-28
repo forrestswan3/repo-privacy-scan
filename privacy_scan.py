@@ -25,11 +25,11 @@ import urllib.request
 from dataclasses import asdict, dataclass, field
 from typing import Iterable, Iterator
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 # --------------------------------------------------------------------------- detectors
 BUILTIN: dict[str, str] = {
-    "private-ipv4": r"\b(?:10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})\b",
+    "private-ipv4": r"(?<![\d.])(?:10(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}|192\.168(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){2})(?![\d.]*\d)",
     "windows-sid": r"\bS-1-5-21-\d{6,}-\d+-\d+(?:-\d+)?\b",
     "email": r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b",
     "private-key": r"-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP )?PRIVATE KEY-----",

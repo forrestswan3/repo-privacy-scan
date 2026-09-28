@@ -24,6 +24,9 @@ class DetectorTests(unittest.TestCase):
         self.assertEqual(self.hits("172.20.1.1"), ["private-ipv4"])
         self.assertEqual(self.hits("docs use 192.0.2.10 and 8.8.8.8"), [])
         self.assertEqual(self.hits("172.32.0.1 is public"), [])
+        # not addresses: octets over 255, version strings, SVG path numbers
+        self.assertEqual(self.hits("M10.669.606.225 and v10.1.2.3.4 and 192.168.1.300"), [])
+        self.assertEqual(self.hits("gw 10.255.255.254"), ["private-ipv4"])
 
     def test_windows_domain_sid(self):
         self.assertEqual(self.hits("owner S-1-5-21-1111111-2222222-3333333-1001"), ["windows-sid"])
